@@ -1,0 +1,176 @@
+
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+
+$pleasant-blue : #01BAEF;
+$pleasant-green : #6EEB83;
+$pleasant-orange : #FFB13D;
+
+$font-family : "Open Sans", sans-serif;
+
+$brand-color : $pleasant-blue;
+
+
+body, html {
+  background-color: white;
+  font-family: $font-family;
+}
+
+.brand-color {
+  color: $brand-color;
+}
+
+#nav {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  padding: 0px 20px;
+
+  h1 {
+    font-size: 30px;
+  }
+
+  #settings {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+
+    height: auto;
+  }
+}
+
+#dashboard {
+
+  #task-title {
+    text-align: center;
+
+    #current-task {
+      margin: auto;
+      border: none;
+      background-color: transparent;
+      text-align: center;
+      resize: none;
+      font-size: 20px;
+      width: 300px;
+
+      height: 30px;
+      margin-bottom: 15px;
+
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+  }
+
+  .clock-container {
+
+     #clock-outline {
+        height: 300px;
+        width: 300px;
+
+        margin: auto;
+
+        background-color: transparent;
+        border: 2px solid $pleasant-blue;
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        #clock-info {
+          text-align: center;
+          width: 100%;
+
+          .time {
+            font-size: 4em;
+            margin-bottom: 12px;
+          }
+
+          #play {
+            background-color: transparent;
+            border: none;
+            color: $pleasant-blue;
+          }
+
+        }
+    }
+  }
+}
+
+#sidebar {
+
+  padding: 30px;
+
+  .box {
+    margin: 40px 0px;
+    box-shadow: 0px 0px 1px #666;
+
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      box-shadow: 0px 0px 5px #666;
+    }
+    .box-title {
+      color: #444;
+      padding: 0px 20px;
+    }
+  }
+
+  .task {
+    box-shadow: 0px 0px 1px #888;
+    height: 50px;
+    line-height: 50px;
+    margin: 12px 0px;
+    padding: 0px 10px;
+
+    position: relative;
+
+    .select {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+
+      height: 30px;
+      line-height: 30px;
+
+      font-size: 10px;
+      padding: 0px 10px;
+
+      color: #888;
+      background-color: white;
+
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      visibility: hidden;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      .select {
+        visibility: visible;
+      }
+    }
+
+  }
+
+
+  #to-do {
+    .box-title {
+      background-color: $pleasant-orange;
+    }
+  }
+
+  #completed {
+    .box-title {
+      background-color: $pleasant-green;
+    }
+  }
+}

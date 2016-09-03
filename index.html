@@ -3,18 +3,108 @@
 <html>
 
 <head>
+
   <title>Awesome Pomodoro Clock</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
   <link href="stylesheets/styles.css" rel="stylesheet" />
 </head>
 
 <body>
 
-  
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div id="nav">
+          <h1><span class="brand-color">Pomo</span>clock</h1>
+
+          <button id="settings">
+            <i class="fa fa-2x fa-cog" aria-hidden="true"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- Pomodoro Clock -->
+      <div class="col-xs-12 col-sm-8" id="dashboard">
+        <div class="row">
+
+          <!-- Task title -->
+          <div class="col-xs-12" id="task-title">
+            <input type="text" id="current-task" placeholder="Enter a new task" />
+          </div>
+
+          <!-- Clock -->
+          <div class="col-xs-12 clock-container">
+            <div id="clock-outline">
+
+              <div id="clock-info">
+                <h3 class="time">00:00</h3>
+                <button id="play" title="Start/stop the timer">
+                  <i class="fa fa-2x fa-play" aria-hidden="true"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- To-do and completed tasks -->
+      <div class="col-xs-12 col-sm-4" id="sidebar">
+
+        <div id="to-do" class="box">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12 box-title">
+                <h3>To-do</h3>
+              </div>
+              <div class="col-xs-12">
+                <div class="task">
+                  <p>
+                    Do some homework
+                  </p>
+                  <div class="select">
+                    Select
+                  </div>
+                </div>
+                <div class="task">
+                  <p>
+                    Meet Deborah
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="completed" class="box">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12 box-title">
+                <h3>Completed</h3>
+              </div>
+              <div class="col-xs-12">
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
