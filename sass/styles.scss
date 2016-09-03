@@ -27,6 +27,8 @@ body, html {
   text-align: center;
   padding: 0px 20px;
 
+  margin-bottom: 30px;
+
   h1 {
     font-size: 30px;
   }
@@ -45,6 +47,8 @@ body, html {
 }
 
 #dashboard {
+
+  margin-bottom: 30px;
 
   #task-title {
     text-align: center;
@@ -71,8 +75,8 @@ body, html {
   .clock-container {
 
      #clock-outline {
-        height: 300px;
-        width: 300px;
+        height: 290px;
+        width: 290px;
 
         margin: auto;
 
@@ -109,7 +113,7 @@ body, html {
   padding: 30px;
 
   .box {
-    margin: 40px 0px;
+    margin: 0px 0px 30px 0px;
     box-shadow: 0px 0px 1px #666;
 
     transition: all .2s ease-in-out;

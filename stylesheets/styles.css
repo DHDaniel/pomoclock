@@ -17,12 +17,13 @@ body, html {
   line-height: 60px;
   text-align: center;
   padding: 0px 20px;
+  margin-bottom: 30px;
 }
-/* line 30, ../sass/styles.scss */
+/* line 32, ../sass/styles.scss */
 #nav h1 {
   font-size: 30px;
 }
-/* line 34, ../sass/styles.scss */
+/* line 36, ../sass/styles.scss */
 #nav #settings {
   position: absolute;
   right: 10px;
@@ -34,10 +35,14 @@ body, html {
 }
 
 /* line 49, ../sass/styles.scss */
+#dashboard {
+  margin-bottom: 30px;
+}
+/* line 53, ../sass/styles.scss */
 #dashboard #task-title {
   text-align: center;
 }
-/* line 52, ../sass/styles.scss */
+/* line 56, ../sass/styles.scss */
 #dashboard #task-title #current-task {
   margin: auto;
   border: none;
@@ -49,15 +54,15 @@ body, html {
   height: 30px;
   margin-bottom: 15px;
 }
-/* line 64, ../sass/styles.scss */
+/* line 68, ../sass/styles.scss */
 #dashboard #task-title #current-task:focus {
   border: none;
   outline: none;
 }
-/* line 73, ../sass/styles.scss */
+/* line 77, ../sass/styles.scss */
 #dashboard .clock-container #clock-outline {
-  height: 300px;
-  width: 300px;
+  height: 290px;
+  width: 290px;
   margin: auto;
   background-color: transparent;
   border: 2px solid #01BAEF;
@@ -66,43 +71,43 @@ body, html {
   align-items: center;
   justify-content: center;
 }
-/* line 87, ../sass/styles.scss */
+/* line 91, ../sass/styles.scss */
 #dashboard .clock-container #clock-outline #clock-info {
   text-align: center;
   width: 100%;
 }
-/* line 91, ../sass/styles.scss */
+/* line 95, ../sass/styles.scss */
 #dashboard .clock-container #clock-outline #clock-info .time {
   font-size: 4em;
   margin-bottom: 12px;
 }
-/* line 96, ../sass/styles.scss */
+/* line 100, ../sass/styles.scss */
 #dashboard .clock-container #clock-outline #clock-info #play {
   background-color: transparent;
   border: none;
   color: #01BAEF;
 }
 
-/* line 107, ../sass/styles.scss */
+/* line 111, ../sass/styles.scss */
 #sidebar {
   padding: 30px;
 }
-/* line 111, ../sass/styles.scss */
+/* line 115, ../sass/styles.scss */
 #sidebar .box {
-  margin: 40px 0px;
+  margin: 0px 0px 30px 0px;
   box-shadow: 0px 0px 1px #666;
   transition: all .2s ease-in-out;
 }
-/* line 117, ../sass/styles.scss */
+/* line 121, ../sass/styles.scss */
 #sidebar .box:hover {
   box-shadow: 0px 0px 5px #666;
 }
-/* line 120, ../sass/styles.scss */
+/* line 124, ../sass/styles.scss */
 #sidebar .box .box-title {
   color: #444;
   padding: 0px 20px;
 }
-/* line 126, ../sass/styles.scss */
+/* line 130, ../sass/styles.scss */
 #sidebar .task {
   box-shadow: 0px 0px 1px #888;
   height: 50px;
@@ -111,7 +116,7 @@ body, html {
   padding: 0px 10px;
   position: relative;
 }
-/* line 135, ../sass/styles.scss */
+/* line 139, ../sass/styles.scss */
 #sidebar .task .select {
   position: absolute;
   right: 20px;
@@ -126,19 +131,19 @@ body, html {
   border-radius: 5px;
   visibility: hidden;
 }
-/* line 154, ../sass/styles.scss */
+/* line 158, ../sass/styles.scss */
 #sidebar .task:hover {
   cursor: pointer;
 }
-/* line 157, ../sass/styles.scss */
+/* line 161, ../sass/styles.scss */
 #sidebar .task:hover .select {
   visibility: visible;
 }
-/* line 166, ../sass/styles.scss */
+/* line 170, ../sass/styles.scss */
 #sidebar #to-do .box-title {
   background-color: #FFB13D;
 }
-/* line 172, ../sass/styles.scss */
+/* line 176, ../sass/styles.scss */
 #sidebar #completed .box-title {
   background-color: #6EEB83;
 }
