@@ -6,7 +6,8 @@ function Timer(seconds, $clock, callback) {
 
 	// self-contained variables (not accessible)
 	var self = this;
-  var play = true;
+  this.play = false;
+  var intervalIDSelf = null;
 
   function update(self) {
       self.length -= 1;
@@ -50,14 +51,14 @@ function Timer(seconds, $clock, callback) {
   // starts the timer
   this.start = function () {
   // setting flag to true
-  	play = true;
+  	self.play = true;
   	update(self); // to avoid first-second delay
     self.updateClock();
   	var intervalID = setInterval(function () {
-      if (self.length <= 0 || play === false) {
+      if (self.length <= 0) {
       	clearInterval(intervalID);
         // if timer has ended and a callback function was passed
-        if (self.length === 0 && typeof callback !== 'undefined') {
+        if (self.length <= 0 && typeof callback !== 'undefined') {
           callback();
         }
         return;
@@ -65,11 +66,13 @@ function Timer(seconds, $clock, callback) {
     	update(self);
       self.updateClock();
     }, 1000);
+    intervalIDSelf = intervalID;
   },
 
   // stops the timer
   this.stop = function () {
-  	play = false;
+  	self.play = false;
+    clearInterval(intervalIDSelf); // handling it here avoids bugs when two clicks are done in under 1 second
   },
 
   // resets the timer
