@@ -17,10 +17,8 @@ function Timer(seconds, $clock, callback) {
   function format(t) {
     if (parseInt(t.hours) !== 0) {
       return ("0" + t.hours).slice(-2) + ":" + ("0" + t.minutes).slice(-2) + ":" + ("0" + t.seconds).slice(-2);
-    } else if (parseInt(t.minutes) !== 0) {
+    } else { // only down to minutes
       return ("0" + t.minutes).slice(-2) + ":" + ("0" + t.seconds).slice(-2);
-    } else {
-      return ("0" + t.seconds).slice(-2);
     }
   }
 
