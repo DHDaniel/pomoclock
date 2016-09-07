@@ -21,12 +21,13 @@ var completedTask = Handlebars.compile(completedTaskRaw);
 var $clockTime = $("#clock-info .time");
 var $playButton = $("#play");
 var $settingsButton = $("#settings-button");
+var $saveAndClose = $("#save-and-close");
 
 
 // useful variables
 var pomodoroLength = 25 * 60; // default pomodoro length in seconds
 var breakLength = 5 * 60; // default break length in seconds
-var currentTimer = null;
+currentTimer = null;
 
 
 /*==================================
@@ -46,7 +47,7 @@ function playButtonHandler(timer) {
 
 // Callback for each time a pomodoro timer ends
 function startBreak() {
-  delete pomoClock;
+  delete currentTimer;
   $playButton.off(); // ensuring previous handler is gone
   breakClock = new Timer(breakLength, $clockTime, startPomodoro);
   breakClock.updateClock();
@@ -60,7 +61,7 @@ function startBreak() {
 
 // Callback for each time a break timer ends
 function startPomodoro() {
-  delete breakClock;
+  delete currentTimer;
   $playButton.off(); // ensuring previous handler is gone
   pomoClock = new Timer(pomodoroLength, $clockTime, startBreak);
   pomoClock.updateClock();
@@ -96,4 +97,34 @@ $settingsButton.clickToggle(function () {
   $(".overlay").removeClass("open");
   $settingsButton.find("i").removeClass("fa-times").addClass("fa-cog");
   $settingsButton.removeClass("open");
+});
+
+$(".increase").click(function () {
+  var curNum = $(this).parents(".inc-dec-container").find(".number").html();
+  curNum = parseInt(curNum) + 1;
+  $(this).parents(".inc-dec-container").find(".number").html(curNum);
+});
+
+$(".decrease").click(function () {
+  var curNum = $(this).parents(".inc-dec-container").find(".number").html();
+  curNum = parseInt(curNum) - 1;
+  if (curNum <= 0) {
+    curNum = 1;
+  }
+  $(this).parents(".inc-dec-container").find(".number").html(curNum);
+});
+
+// saving desired settings
+$saveAndClose.click(function () {
+  var pomodoroLength = ($("#pomodoro-length .number").html() * 60);
+  var breakLength = ($("#break-length .number").html() * 60);
+
+  delete currentTimer;
+
+  pomoClock = new Timer(pomodoroLength, $clockTime, startBreak);
+  currentTimer = pomoClock; // changing current timer
+  pomoClock.reset();
+  pomoClock.updateClock();
+
+  $settingsButton.click(); // closing overlay and menu
 });
