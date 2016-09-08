@@ -88,11 +88,43 @@ button:focus {
   border: none;
   outline: none;
 }
-/* line 109, ../sass/styles.scss */
+/* line 108, ../sass/styles.scss */
+#dashboard #task-title #finish-task {
+  border: 1px solid #1abf36;
+  border-radius: 5%;
+  background-color: transparent;
+  padding: 5px 10px;
+  display: block;
+  margin: 0px auto 20px auto;
+  transition: opacity 0.2s ease-in-out;
+  /* Hidden until task is entered */
+  visibility: hidden;
+  opacity: 0;
+}
+/* line 121, ../sass/styles.scss */
+#dashboard #task-title #finish-task a {
+  text-decoration: none;
+  color: #1abf36;
+}
+/* line 124, ../sass/styles.scss */
+#dashboard #task-title #finish-task a:hover {
+  text-decoration: none;
+  color: #6EEB83;
+}
+/* line 130, ../sass/styles.scss */
+#dashboard #task-title #finish-task:hover {
+  border-color: #6EEB83;
+}
+/* line 134, ../sass/styles.scss */
+#dashboard #task-title #finish-task.visible {
+  opacity: 1;
+  visibility: visible;
+}
+/* line 141, ../sass/styles.scss */
 #dashboard .clock-container {
   /* Clock circle */
 }
-/* line 112, ../sass/styles.scss */
+/* line 144, ../sass/styles.scss */
 #dashboard .clock-container #clock-outline {
   height: 290px;
   width: 290px;
@@ -105,17 +137,17 @@ button:focus {
   justify-content: center;
   /* Time and button to play/pause */
 }
-/* line 127, ../sass/styles.scss */
+/* line 159, ../sass/styles.scss */
 #dashboard .clock-container #clock-outline #clock-info {
   text-align: center;
   width: 100%;
 }
-/* line 131, ../sass/styles.scss */
+/* line 163, ../sass/styles.scss */
 #dashboard .clock-container #clock-outline #clock-info .time {
   font-size: 4em;
   margin-bottom: 12px;
 }
-/* line 136, ../sass/styles.scss */
+/* line 168, ../sass/styles.scss */
 #dashboard .clock-container #clock-outline #clock-info #play {
   background-color: transparent;
   border: none;
@@ -123,28 +155,28 @@ button:focus {
 }
 
 /* Boxes with TO-DOs and COMPLETED */
-/* line 148, ../sass/styles.scss */
+/* line 180, ../sass/styles.scss */
 #sidebar {
   padding: 30px;
   /* Containers */
   /* Custom header background colours */
 }
-/* line 153, ../sass/styles.scss */
+/* line 185, ../sass/styles.scss */
 #sidebar .box {
   margin: 0px 0px 30px 0px;
   box-shadow: 0px 0px 1px #666;
   transition: all .2s ease-in-out;
 }
-/* line 159, ../sass/styles.scss */
+/* line 191, ../sass/styles.scss */
 #sidebar .box:hover {
   box-shadow: 0px 0px 5px #aaa;
 }
-/* line 162, ../sass/styles.scss */
+/* line 194, ../sass/styles.scss */
 #sidebar .box .box-title {
   color: #444;
   padding: 0px 20px;
 }
-/* line 168, ../sass/styles.scss */
+/* line 200, ../sass/styles.scss */
 #sidebar .task {
   box-shadow: 0px 0px 1px #888;
   height: 50px;
@@ -153,35 +185,35 @@ button:focus {
   padding: 0px 10px;
   position: relative;
 }
-/* line 180, ../sass/styles.scss */
+/* line 212, ../sass/styles.scss */
 #sidebar #to-do {
   /* Tooltips only appear in to-do list, NOT in completed */
 }
-/* line 181, ../sass/styles.scss */
+/* line 213, ../sass/styles.scss */
 #sidebar #to-do #add {
   color: #aaa;
 }
-/* line 183, ../sass/styles.scss */
+/* line 215, ../sass/styles.scss */
 #sidebar #to-do #add input {
   display: inline-block;
   border: none;
   background-color: transparent;
 }
-/* line 188, ../sass/styles.scss */
+/* line 220, ../sass/styles.scss */
 #sidebar #to-do #add input:focus {
   border: none;
   outline: none;
 }
-/* line 195, ../sass/styles.scss */
+/* line 227, ../sass/styles.scss */
 #sidebar #to-do #add:hover {
   color: #01BAEF;
   cursor: pointer;
 }
-/* line 202, ../sass/styles.scss */
+/* line 234, ../sass/styles.scss */
 #sidebar #to-do .task {
   /* Hovering tooltip */
 }
-/* line 204, ../sass/styles.scss */
+/* line 236, ../sass/styles.scss */
 #sidebar #to-do .task .options {
   position: absolute;
   right: 20px;
@@ -193,24 +225,24 @@ button:focus {
   background-color: white;
   visibility: visible;
 }
-/* line 219, ../sass/styles.scss */
+/* line 251, ../sass/styles.scss */
 #sidebar #to-do .task .current {
   color: #01BAEF;
 }
-/* line 223, ../sass/styles.scss */
+/* line 255, ../sass/styles.scss */
 #sidebar #to-do .task:hover {
   cursor: pointer;
 }
-/* line 228, ../sass/styles.scss */
+/* line 260, ../sass/styles.scss */
 #sidebar #to-do .box-title {
   background-color: #01BAEF;
 }
-/* line 234, ../sass/styles.scss */
+/* line 266, ../sass/styles.scss */
 #sidebar #completed .box-title {
   background-color: #6EEB83;
 }
 
-/* line 241, ../sass/styles.scss */
+/* line 273, ../sass/styles.scss */
 .overlay {
   transition: all 0.2s ease-in-out;
   position: fixed;
@@ -223,36 +255,36 @@ button:focus {
   visibility: hidden;
   opacity: 0;
 }
-/* line 256, ../sass/styles.scss */
+/* line 288, ../sass/styles.scss */
 .overlay.open {
   visibility: visible;
   opacity: 1;
 }
 
-/* line 262, ../sass/styles.scss */
+/* line 294, ../sass/styles.scss */
 #settings {
   overflow: scroll;
 }
-/* line 266, ../sass/styles.scss */
+/* line 298, ../sass/styles.scss */
 #settings .inc-dec-container {
   margin-top: 100px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
-/* line 272, ../sass/styles.scss */
+/* line 304, ../sass/styles.scss */
 #settings .inc-dec-container .label {
   font-size: 1em;
   color: #ccc;
 }
-/* line 276, ../sass/styles.scss */
+/* line 308, ../sass/styles.scss */
 #settings .inc-dec-container .inc-dec {
   font-size: 2.5em;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* line 283, ../sass/styles.scss */
+/* line 315, ../sass/styles.scss */
 #settings .inc-dec-container .inc-dec button.inc-dec-toggle {
   border-radius: 50%;
   border: 2px solid #01BAEF;
@@ -261,17 +293,17 @@ button:focus {
   color: #01BAEF;
   background-color: transparent;
 }
-/* line 293, ../sass/styles.scss */
+/* line 325, ../sass/styles.scss */
 #settings .inc-dec-container .inc-dec button.inc-dec-toggle:hover {
   border: 2px solid #0192bc;
 }
-/* line 298, ../sass/styles.scss */
+/* line 330, ../sass/styles.scss */
 #settings .inc-dec-container .inc-dec .number {
   color: white;
   font-size: 1.5em;
   margin: 0px 20px;
 }
-/* line 306, ../sass/styles.scss */
+/* line 338, ../sass/styles.scss */
 #settings #save-and-close {
   margin-top: 100px;
   font-size: 1.4em;
@@ -281,7 +313,7 @@ button:focus {
   border: none;
   border-radius: 10px;
 }
-/* line 317, ../sass/styles.scss */
+/* line 349, ../sass/styles.scss */
 #settings #save-and-close:hover {
   background-color: #9bf1a9;
 }

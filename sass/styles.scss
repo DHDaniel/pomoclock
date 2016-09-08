@@ -104,6 +104,38 @@ button {
         outline: none;
       }
     }
+
+    #finish-task {
+      border: 1px solid darken($pleasant-green, 25%);
+      border-radius: 5%;
+      background-color: transparent;
+      padding: 5px 10px;
+      display: block;
+      margin: 0px auto 20px auto;
+      transition: opacity 0.2s ease-in-out;
+
+      /* Hidden until task is entered */
+      visibility: hidden;
+      opacity: 0;
+
+      a {
+        text-decoration: none;
+        color: darken($pleasant-green, 25%);
+        &:hover {
+          text-decoration: none;
+          color: $pleasant-green;
+        }
+      }
+
+      &:hover {
+        border-color: $pleasant-green;
+      }
+
+      &.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 
   .clock-container {
