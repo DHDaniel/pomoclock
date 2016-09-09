@@ -57,7 +57,7 @@ function Timer(seconds, $clock, callback) {
       	clearInterval(intervalID);
         // if timer has ended and a callback function was passed
         if (self.length <= 0 && typeof callback !== 'undefined') {
-          callback();
+          callback(self); // the timer is passed as an argument to the callback function - optional
         }
         return;
       }

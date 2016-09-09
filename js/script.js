@@ -25,9 +25,9 @@ var $saveAndClose = $("#save-and-close");
 var $currentTask = $("#current-task");
 
 // useful variables
-var pomodoroLength = 25 * 60; // default pomodoro length in seconds
-var breakLength = 5 * 60; // default break length in seconds
-var currentTimer = null;
+var pomodoroLength = 10;//25 * 60; // default pomodoro length in seconds
+var breakLength = 5;//5 * 60; // default break length in seconds
+var pomodoro = true;
 
 /*==================================
  Timer and pomodoro related things
@@ -44,41 +44,30 @@ function playButtonHandler(timer) {
   }
 }
 
-// TO-DO --- FIX ANNOYING BUG BY SIMPLY MAKING THE TIMER SELF SUFFICIENT, SO WE ONLY HAVE ONE timer
+// This function gets called each time the timer finishes, and it is passed the timer itself as an argument.
+function restartTimer(timer) {
 
-// Callback for each time a pomodoro timer ends
-function startBreak() {
-  delete currentTimer[0];
-  $playButton.off(); // ensuring previous handler is gone
-  breakClock = new Timer(breakLength, $clockTime, startPomodoro);
-  breakClock.updateClock();
-  breakClock.start();
-  currentTimer[0] = breakClock;
-  // re-binding button to new timer object
-  $playButton.click(function () {
-    playButtonHandler(breakClock);
-  });
-}
+  // handling new start of clock
+    timer.stop();
+    if (pomodoro) {
+      timer.originalTime = breakLength;
+      timer.reset();
+      $playButton.click();
+      pomodoro = false;
+    } else {
+      timer.originalTime = pomodoroLength;
+      timer.reset();
+      $playButton.click();
+      pomodoro = true;
+    }
+    timer.updateClock();
 
-// Callback for each time a break timer ends
-function startPomodoro() {
-  delete currentTimer[0];
-  $playButton.off(); // ensuring previous handler is gone
-  pomoClock = new Timer(pomodoroLength, $clockTime, startBreak);
-  pomoClock.updateClock();
-  pomoClock.start();
-  currentTimer[0] = pomoClock;
-  // re-binding button to new timer object
-  // re-binding button to new timer object
-  $playButton.click(function () {
-    playButtonHandler(pomoClock);
-  });
+
 }
 
 // all timers are declared global in order to be able to delete them later
-var pomoClock = new Timer(pomodoroLength, $clockTime, startBreak);
+var pomoClock = new Timer(pomodoroLength, $clockTime, restartTimer);
 pomoClock.updateClock();
-currentTimer[0] = pomoClock;
 
 $playButton.click(function () {
   playButtonHandler(pomoClock);
@@ -117,15 +106,13 @@ $(".decrease").click(function () {
 
 // saving desired settings
 $saveAndClose.click(function () {
-  var pomodoroLength = ($("#pomodoro-length .number").html() * 60);
-  var breakLength = ($("#break-length .number").html() * 60);
+  pomodoroLength = ($("#pomodoro-length .number").html() * 60);
+  breakLength = ($("#break-length .number").html() * 60);
 
-  delete currentTimer[0];
-
-  pomoClock = new Timer(pomodoroLength, $clockTime, startBreak);
-  currentTimer[0] = pomoClock; // changing current timer
-  pomoClock.reset();
-  pomoClock.updateClock();
+  // resetting values for the clock
+  pomodoro = false;
+  restartTimer(pomoClock);
+  $playButton.click();
 
   $settingsButton.click(); // closing overlay and menu
 });
@@ -142,13 +129,6 @@ function Task(description) {
 // handling new tasks written in input
 $currentTask.on("keydown", function (e) {
   var key = e.which;
-  // if enter was pressed
-  if (key == 13) {
-    startPomodoro();
-    // resetting
-    $(this).val("");
-  }
-
   $("#finish-task").addClass("visible");
 
   // if backspace
@@ -164,7 +144,13 @@ $("#finish-task").click(function () {
   if (Boolean(task)) {
     task = new Task(task);
     var html = completedTask(task);
-    startBreak();
+
+    // starting break if task was completed
+    pomdoro = true;
+    restartTimer(pomoClock);
+
+    // resetting current task box
+    $currentTask.val("");
 
     // adding task to completed list
     $(".box#completed .task-container").append(html);
@@ -192,8 +178,6 @@ $("#to-do").on("click", ".task", function (e) {
     return;
   }
 
-  console.log(e.target);
-  console.log($(this));
   if (e.target !== $(this)) {
     return;
   }
@@ -202,10 +186,8 @@ $("#to-do").on("click", ".task", function (e) {
   $currentTask.val(task);
   $("#finish-task").addClass("visible");
 
-  // restarting timer
-  currentTimer.stop();
-  currentTimer.reset();
-  $playButton.click();
+  pomodoro = false;
+  restartTimer(pomoClock);
 
   // removing from list
   $(this).remove();
