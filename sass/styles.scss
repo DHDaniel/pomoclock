@@ -155,6 +155,8 @@ button {
         align-items: center;
         justify-content: center;
 
+        transition: border-color 2s ease-in-out;
+
         /* Time and button to play/pause */
         #clock-info {
           text-align: center;
@@ -169,6 +171,8 @@ button {
             background-color: transparent;
             border: none;
             color: $pleasant-blue;
+
+            transition: color 2s ease-in-out;
           }
 
         }
@@ -205,6 +209,13 @@ button {
     padding: 0px 10px;
 
     position: relative;
+
+    p {
+      display: inline-block;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
 
 

@@ -23,6 +23,11 @@ var $playButton = $("#play");
 var $settingsButton = $("#settings-button");
 var $saveAndClose = $("#save-and-close");
 var $currentTask = $("#current-task");
+var $outerCircle = $("#clock-outline");
+
+// colours that will be used
+var pleasantOrange = "#FFB13D";
+var pleasantBlue = "#01BAEF";
 
 // useful variables
 var pomodoroLength = 10;//25 * 60; // default pomodoro length in seconds
@@ -42,27 +47,44 @@ function playButtonHandler(timer) {
     timer.start();
     $playButton.find("i").removeClass("fa-play").addClass("fa-pause");
   }
+
+  if (pomodoro) {
+    changeClockColour(pleasantOrange);
+  } else {
+    changeClockColour(pleasantBlue);
+  }
+}
+
+function changeClockColour(colour) {
+  $outerCircle.css("border-color", colour);
+  $playButton.css("color", colour);
 }
 
 // This function gets called each time the timer finishes, and it is passed the timer itself as an argument.
 function restartTimer(timer) {
 
-  // handling new start of clock
+  // handling new start of clock and colour of circle depending on whether it is a break/pomodoro
     timer.stop();
     if (pomodoro) {
       timer.originalTime = breakLength;
       timer.reset();
       $playButton.click();
       pomodoro = false;
+
+      // colour
+      changeClockColour(pleasantBlue);
+
     } else {
       timer.originalTime = pomodoroLength;
       timer.reset();
       $playButton.click();
       pomodoro = true;
+
+      // color
+      changeClockColour(pleasantOrange);
+
     }
     timer.updateClock();
-
-
 }
 
 // all timers are declared global in order to be able to delete them later
@@ -146,7 +168,7 @@ $("#finish-task").click(function () {
     var html = completedTask(task);
 
     // starting break if task was completed
-    pomdoro = true;
+    pomodoro = true;
     restartTimer(pomoClock);
 
     // resetting current task box
@@ -173,12 +195,8 @@ $("#to-do #add-task").keypress(function (e) {
 });
 
 $("#to-do").on("click", ".task", function (e) {
-  // checking here because I don't want to change the HTML code
-  if ($(this).attr("id") == "add") {
-    return;
-  }
-
-  if (e.target !== $(this)) {
+  // checking that it is not the "add" task tab, and that the options weren't clicked (the actual TASK was clicked)
+  if ($(this).attr("id") == "add" || $(e.target).is('p') !== true) {
     return;
   }
 
