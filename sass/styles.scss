@@ -161,6 +161,7 @@ button {
         #clock-info {
           text-align: center;
           width: 100%;
+          position: relative;
 
           .time {
             font-size: 4em;
@@ -174,7 +175,6 @@ button {
 
             transition: color 2s ease-in-out;
           }
-
         }
     }
   }

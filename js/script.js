@@ -19,6 +19,7 @@ var completedTask = Handlebars.compile(completedTaskRaw);
 
 // caching essential DOM elements to avoid repeated searches
 var $clockTime = $("#clock-info .time");
+var $clockFill = $("#number-fill");
 var $playButton = $("#play");
 var $settingsButton = $("#settings-button");
 var $saveAndClose = $("#save-and-close");
@@ -30,13 +31,33 @@ var pleasantOrange = "#FFB13D";
 var pleasantBlue = "#01BAEF";
 
 // useful variables
-var pomodoroLength = 10;//25 * 60; // default pomodoro length in seconds
-var breakLength = 5;//5 * 60; // default break length in seconds
+var pomodoroLength = 25 * 60; // default pomodoro length in seconds
+var breakLength = 5 * 60; // default break length in seconds
 var pomodoro = true;
 
 /*==================================
  Timer and pomodoro related things
 ==================================*/
+
+// formats the string to be returned according to amount of time
+// @param t is an object with hours, minutes and seconds.
+// returns a string HH:MM:SS
+function format(t) {
+  if (parseInt(t.hours) !== 0) {
+    return ("0" + t.hours).slice(-2) + ":" + ("0" + t.minutes).slice(-2) + ":" + ("0" + t.seconds).slice(-2);
+  } else { // only down to minutes
+    return ("0" + t.minutes).slice(-2) + ":" + ("0" + t.seconds).slice(-2);
+  }
+}
+
+
+// updates HTML clock with formatted time HH:MM:SS
+function updateClock(timer) {
+  var t = timer.getRemaining();
+  // format the time
+  var clockString = format(t);
+  $clockTime.html(clockString); // updating pomodoro clock
+}
 
 // play/pause functionality
 function playButtonHandler(timer) {
@@ -84,12 +105,11 @@ function restartTimer(timer) {
       changeClockColour(pleasantOrange);
 
     }
-    timer.updateClock();
+    updateClock(timer);
 }
 
-// all timers are declared global in order to be able to delete them later
-var pomoClock = new Timer(pomodoroLength, $clockTime, restartTimer);
-pomoClock.updateClock();
+var pomoClock = new Timer(pomodoroLength, updateClock, restartTimer);
+updateClock(pomoClock);
 
 $playButton.click(function () {
   playButtonHandler(pomoClock);

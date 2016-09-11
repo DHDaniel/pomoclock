@@ -142,13 +142,14 @@ button:focus {
 #dashboard .clock-container #clock-outline #clock-info {
   text-align: center;
   width: 100%;
+  position: relative;
 }
-/* line 165, ../sass/styles.scss */
+/* line 166, ../sass/styles.scss */
 #dashboard .clock-container #clock-outline #clock-info .time {
   font-size: 4em;
   margin-bottom: 12px;
 }
-/* line 170, ../sass/styles.scss */
+/* line 171, ../sass/styles.scss */
 #dashboard .clock-container #clock-outline #clock-info #play {
   background-color: transparent;
   border: none;
